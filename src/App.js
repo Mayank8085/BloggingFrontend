@@ -7,7 +7,7 @@ import Login from './Components/Login';
 import Register from './Components/Register'
 import Home from './Components/Home';
 import { BrowserRouter as Router, Route,Routes } from "react-router-dom";
-
+import Contact from './Components/Contact'
 import { useContext } from 'react';
 import { Context } from './Context/Context';
 
@@ -23,7 +23,7 @@ function App() {
         <Route exact path='/Write' element={user?<Write/>:<Login/>}></Route>    
         <Route exact path='/Settings' element={user?<Settings/>:<Home/>}></Route>
         <Route exact path='/Post/:postId' element={<Single/>}></Route>
-        <Route exact path='/Contact' element={<Home/>}></Route>
+        <Route exact path='/Contact' element={<Contact/>}></Route>
       </Routes>
     </Router>
   );
