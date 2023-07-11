@@ -5,7 +5,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import AccountCircleSharpIcon from '@mui/icons-material/AccountCircleSharp';
 import { Context } from '../Context/Context';
 import axios from 'axios';
-
+import Alert from 'react-bootstrap/Alert';
 
 const Settings = () => {
   const {user,dispatch} = useContext(Context);
@@ -14,7 +14,8 @@ const Settings = () => {
   const [password,setpassword] = useState("")
   const [image,changeImage] = useState(null);
   let [imagePrev, changeImgPrev] = useState(null)
-  
+  const [sshow, setsshow] = useState(false);
+  const [eshow, seteshow] = useState(false);
 
   const handleImageUpload = (event) => {
     const file = event.target.files[0];
@@ -51,17 +52,22 @@ const Settings = () => {
   dispatch({type:"UPDATE_SUCCESS",payload:res.data.user})
   setusername(res.data.user.username)
   setemail(res.data.user.email)
-
+    setsshow(true);
     }catch(error) {
       dispatch({type:"UPDATE_FAILURE"})
       console.log(error);
-   
+      seteshow(true);
     }
   }
   
   return (
     <div  style={{flex:"9",marginLeft:"100px"}}>
-     
+       {sshow?<Alert variant="success" style={{width:"1000px"}} onClose={() => setsshow(false)} dismissible>
+        <Alert.Heading>Account Updated Successfully</Alert.Heading>
+      </Alert>:''}
+     { eshow?<Alert variant="danger" style={{width:"1000px"}}onClose={() => seteshow(false)}  dismissible>
+        <Alert.Heading>Error Occured!!</Alert.Heading>
+      </Alert>:''}
        <Container className='my-4'  style={{display:"flex",justifyContent:"space-between"}}>
       <h2 style={{color:"#D7A572",marginLeft:"-117px"}} >Update Account</h2>
       <Button variant="outlined" onClick={handledelete} startIcon={<DeleteIcon />} style={{color:"red",borderColor:"red",marginRight:"300px"}}> Delete Account</Button>

@@ -28,7 +28,7 @@ const Sidebar = () => {
         {
           cat.map((item) =>{
             return(
-        <Link to={"/Home"} style={{textDecoration:"none",color:"inherit"}}> <li className='listitem'>{item.name}</li> </Link> 
+        <Link to={`/?catName=${item.name}`} style={{textDecoration:"none",color:"inherit"}}> <li className='listitem' key={item.name}>{item.name}</li> </Link> 
             )
           })
         }
