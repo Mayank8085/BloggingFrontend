@@ -8,7 +8,7 @@ import {
 const Header = () => {
   return (
     <div>
-        <span className='title'>Connect</span>
+        <span className='title'>CONNECT</span>
         <MDBCarousel className='Carousel' showIndicators showControls fade>
       <MDBCarouselItem
         className='w-100 d-block crl'
