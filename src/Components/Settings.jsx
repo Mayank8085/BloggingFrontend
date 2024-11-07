@@ -30,7 +30,7 @@ const Settings = () => {
   };
   const handledelete = async () =>{
     try{
-     await axios.delete("https://blogspot-api-p0n5.onrender.com/api/users/"+user._id,{data:{userId:user._id}},{withCredentials:true})
+     await axios.delete("http://localhost:8000/api/users/"+user._id,{data:{userId:user._id}},{withCredentials:true})
      dispatch({type:"LOGOUT"})
      window.location.replace("/");
     }
@@ -48,7 +48,7 @@ const Settings = () => {
     formData.append("password", password);
     formData.append("file", image);
     try{
-  const res = await axios.put("https://blogspot-api-p0n5.onrender.com/api/users/"+user._id,formData,{withCredentials:true})
+  const res = await axios.put("http://localhost:8000/api/users/"+user._id,formData,{withCredentials:true})
   dispatch({type:"UPDATE_SUCCESS",payload:res.data.user})
   setusername(res.data.user.username)
   setemail(res.data.user.email)

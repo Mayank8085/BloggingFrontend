@@ -21,7 +21,7 @@ const SinglePost = () => {
   
     useEffect(()=>{
           const fetchpost = async () =>{
-           const res = await axios.get('https://blogspot-api-p0n5.onrender.com/api/posts/'+id,{withcredential:true});
+           const res = await axios.get('http://localhost:8000/api/posts/'+id,{withcredential:true});
             setpost(res.data);  
             setTitle(res.data.title);
             setDesc(res.data.desc);
@@ -31,7 +31,7 @@ const SinglePost = () => {
 
     const handleDelete = async () => {
       try{
-        const res = await axios.delete("https://blogspot-api-p0n5.onrender.com/api/posts/"+post._id,{data:{username:post.username}},{withCredentials:true})
+        const res = await axios.delete("http://localhost:8000/api/posts/"+post._id,{data:{username:post.username}},{withCredentials:true})
            res.data && window.location.replace("/");
           }
         catch(error){       
@@ -43,7 +43,7 @@ const SinglePost = () => {
     }
     const handleUpdate = async () =>{
       try{
-     const res = await axios.put("https://blogspot-api-p0n5.onrender.com/api/posts/"+post._id,{
+     const res = await axios.put("http://localhost:8000/api/posts/"+post._id,{
       username:post.username,
       title:title,
       desc:desc

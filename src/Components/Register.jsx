@@ -43,7 +43,7 @@ function Register() {
     formData.append("password", pass);
     formData.append("file", image);
     try{
-  const res = await axios.post("https://blogspot-api-p0n5.onrender.com/api/auth/register",formData,{withCredentials:true})
+  const res = await axios.post("http://localhost:8000/api/auth/register",formData,{withCredentials:true})
      res.data && window.location.replace("/login");}
 
   catch(err){

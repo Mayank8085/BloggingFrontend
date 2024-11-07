@@ -9,7 +9,7 @@ const Home = () => {
   const {search} = useLocation();
   useEffect( () =>{
      const fetchdata = async () =>{
-       const res = await axios.get("https://blogspot-api-p0n5.onrender.com/api/posts"+search,{withCredentials:true});
+       const res = await axios.get("http://localhost:8000/api/posts"+search,{withCredentials:true});
        setposts(res.data);
     }
     fetchdata();

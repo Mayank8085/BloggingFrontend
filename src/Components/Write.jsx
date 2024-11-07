@@ -9,7 +9,7 @@ const Write = () => {
 
     useEffect( () =>{
       const fetchdata = async () =>{
-        const res = await axios.get("https://blogspot-api-p0n5.onrender.com/api/categories",{withCredentials:true});
+        const res = await axios.get("http://localhost:8000/api/categories",{withCredentials:true});
       
         setcate(res.data);
      }
@@ -41,7 +41,7 @@ const Write = () => {
     formData.append("categories", cat);
     formData.append("file", image);
     try{
-  const res = await axios.post("https://blogspot-api-p0n5.onrender.com/api/posts/",formData,{withCredentials:true})
+  const res = await axios.post("http://localhost:8000/api/posts/",formData,{withCredentials:true})
      res.data && window.location.replace(`/Post/${res.data._id}`);
     }
   catch(error){

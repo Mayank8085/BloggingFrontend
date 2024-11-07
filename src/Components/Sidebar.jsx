@@ -10,7 +10,7 @@ const Sidebar = () => {
   const [cat,setcat] = useState([]);
   useEffect( () =>{
     const fetchcat = async () =>{
-      const res = await axios.get("https://blogspot-api-p0n5.onrender.com/api/categories/",{withCredentials:true});
+      const res = await axios.get("http://localhost:8000/api/categories/",{withCredentials:true});
       setcat(res.data);
    }
    fetchcat();
