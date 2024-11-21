@@ -6,14 +6,14 @@ import Typography from "@mui/material/Typography";
 import { Row,Col } from "react-bootstrap";
 import { Link } from 'react-router-dom';
 const Post = ({posts}) => {
- 
+   
   return (
     <div style={{flex:"9"}}>
          <div className='container my-2' style={{ width: '1080px'}}>
+          
           <Row xs={1} md={3} className="g-4">
             {
-              posts.map( (item) =>{
-             
+               posts.map( (item) =>{
                 return(
                   <Col id={item._id}>
                   <Card sx={{ maxWidth: 300 }} className="mx-2 my-2">

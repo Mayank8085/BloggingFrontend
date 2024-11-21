@@ -19,7 +19,7 @@ const Home = () => {
     <div>
       <Header/>
       <div style={{display:"flex"}}>
-        <Post posts={posts}/>
+        {posts.length ===0 ?<h4>Sorry!! No posts found </h4>: <Post posts={posts}/> }
         <Sidebar />
       </div>
     </div>

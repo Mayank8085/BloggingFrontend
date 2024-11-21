@@ -71,7 +71,7 @@ const SinglePost = () => {
           </Typography>
         
           </Container>
-          {!updatedMode? <Typography className="des my-4" variant="body2" color="black">
+          {!updatedMode? <Typography className="des my-4" variant="body2" color="black" style={{whiteSpace:"pre-wrap"}}>
          {post.desc}
           </Typography>:<> <Form.Label className='my-2' >Description</Form.Label>
         <Form.Control as="textarea" rows={3} value={desc} onChange={e=>{setDesc(e.target.value)}}/> 
