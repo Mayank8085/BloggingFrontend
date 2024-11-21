@@ -4,12 +4,13 @@ import Sidebar from './Sidebar'
 import Header from './Header'
 import axios from 'axios';
 import { useLocation } from 'react-router-dom';
+import { backend } from '../backend';
 const Home = () => {
   const [posts,setposts] = useState([]);
   const {search} = useLocation();
   useEffect( () =>{
      const fetchdata = async () =>{
-       const res = await axios.get("http://localhost:8000/api/posts"+search,{withCredentials:true});
+       const res = await axios.get(`${backend}/posts`+search,{withCredentials:true});
        setposts(res.data);
     }
     fetchdata();

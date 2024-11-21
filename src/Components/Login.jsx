@@ -13,6 +13,8 @@ from 'mdb-react-ui-kit';
 import { Link } from 'react-router-dom';
 import { Context } from '../Context/Context';
 import axios from 'axios';
+import { backend } from '../backend';
+
 const Login = () => {
   const userRef = useRef()
   const passwordRef = useRef()
@@ -21,7 +23,7 @@ const Login = () => {
       e.preventDefault();
       dispatch({type:"LOGIN_START"})
       try{
-            const res = await axios.post("http://localhost:8000/api/auth/login",{
+            const res = await axios.post(`${backend}/auth/login`,{
               username:userRef.current.value,
               password:passwordRef.current.value,
             },{withCredentials:true})

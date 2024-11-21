@@ -6,6 +6,7 @@ import AccountCircleSharpIcon from '@mui/icons-material/AccountCircleSharp';
 import { Context } from '../Context/Context';
 import axios from 'axios';
 import Alert from 'react-bootstrap/Alert';
+import { backend } from '../backend';
 
 const Settings = () => {
   const {user,dispatch} = useContext(Context);
@@ -30,7 +31,7 @@ const Settings = () => {
   };
   const handledelete = async () =>{
     try{
-     await axios.delete("http://localhost:8000/api/users/"+user._id,{data:{userId:user._id}},{withCredentials:true})
+     await axios.delete(`${backend}/users/`+user._id,{data:{userId:user._id}},{withCredentials:true})
      dispatch({type:"LOGOUT"})
      window.location.replace("/");
     }
@@ -48,7 +49,7 @@ const Settings = () => {
     formData.append("password", password);
     formData.append("file", image);
     try{
-  const res = await axios.put("http://localhost:8000/api/users/"+user._id,formData,{withCredentials:true})
+  const res = await axios.put(`${backend}/users/`+user._id,formData,{withCredentials:true})
   dispatch({type:"UPDATE_SUCCESS",payload:res.data.user})
   setusername(res.data.user.username)
   setemail(res.data.user.email)

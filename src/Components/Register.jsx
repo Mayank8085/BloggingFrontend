@@ -11,6 +11,7 @@ import {
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import { backend } from "../backend";
 
 function Register() {
   const [imageName, setImageName] = useState("");
@@ -43,7 +44,7 @@ function Register() {
     formData.append("password", pass);
     formData.append("file", image);
     try{
-  const res = await axios.post("http://localhost:8000/api/auth/register",formData,{withCredentials:true})
+  const res = await axios.post(`${backend}/auth/register`,formData,{withCredentials:true})
      res.data && window.location.replace("/login");}
 
   catch(err){

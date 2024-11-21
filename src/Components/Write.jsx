@@ -3,13 +3,14 @@ import { useState,useContext,useEffect } from 'react';
 import { TextField,MenuItem } from '@mui/material';
 import { Context } from '../Context/Context';
 import axios from 'axios';
+import { backend } from '../backend';
 const Write = () => {
   const {user} = useContext(Context) ;
   const [cate,setcate] = useState([{name:"Other"}]);
 
     useEffect( () =>{
       const fetchdata = async () =>{
-        const res = await axios.get("http://localhost:8000/api/categories",{withCredentials:true});
+        const res = await axios.get(`${backend}/categories`,{withCredentials:true});
       
         setcate(res.data);
      }
@@ -41,7 +42,7 @@ const Write = () => {
     formData.append("categories", cat);
     formData.append("file", image);
     try{
-  const res = await axios.post("http://localhost:8000/api/posts/",formData,{withCredentials:true})
+  const res = await axios.post(`${backend}/posts/`,formData,{withCredentials:true})
      res.data && window.location.replace(`/Post/${res.data._id}`);
     }
   catch(error){

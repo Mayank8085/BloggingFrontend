@@ -6,11 +6,12 @@ import TwitterIcon from '@mui/icons-material/Twitter';
 import { Pinterest } from '@mui/icons-material';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import { backend } from '../backend';
 const Sidebar = () => {
   const [cat,setcat] = useState([]);
   useEffect( () =>{
     const fetchcat = async () =>{
-      const res = await axios.get("http://localhost:8000/api/categories/",{withCredentials:true});
+      const res = await axios.get(`${backend}/categories/`,{withCredentials:true});
       setcat(res.data);
    }
    fetchcat();

@@ -11,6 +11,8 @@ import Contact from './Components/Contact'
 import { useContext } from 'react';
 import { Context } from './Context/Context';
 
+console.log(process.env.REACT_APP_API_URL);
+
 function App() {
   const {user} = useContext(Context) ;
   return (

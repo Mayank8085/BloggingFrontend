@@ -8,6 +8,7 @@ import { useLocation } from 'react-router-dom';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { Context } from '../Context/Context';
+import { backend } from '../backend';
 
 const SinglePost = () => {
   const {user} = useContext(Context);
@@ -21,7 +22,7 @@ const SinglePost = () => {
   
     useEffect(()=>{
           const fetchpost = async () =>{
-           const res = await axios.get('http://localhost:8000/api/posts/'+id,{withcredential:true});
+           const res = await axios.get(`${backend}/posts/`+id,{withcredential:true});
             setpost(res.data);  
             setTitle(res.data.title);
             setDesc(res.data.desc);
@@ -31,7 +32,7 @@ const SinglePost = () => {
 
     const handleDelete = async () => {
       try{
-        const res = await axios.delete("http://localhost:8000/api/posts/"+post._id,{data:{username:post.username}},{withCredentials:true})
+        const res = await axios.delete(`${backend}/posts/`+post._id,{data:{username:post.username}},{withCredentials:true})
            res.data && window.location.replace("/");
           }
         catch(error){       
@@ -43,7 +44,7 @@ const SinglePost = () => {
     }
     const handleUpdate = async () =>{
       try{
-     const res = await axios.put("http://localhost:8000/api/posts/"+post._id,{
+     const res = await axios.put(`${backend}/posts/`+post._id,{
       username:post.username,
       title:title,
       desc:desc
